@@ -58,31 +58,40 @@ def message(subject, text, img, attachment):
         '-m',
         '--mail',
         prompt=True,
+        default="Message",
         help="Message text"
         )
 @click.option(
         '-i',
         '--image',
         prompt=True,
-        type=click.Path(),
-        default=None,
+        default='None',
         help="Image path"
         )
 @click.option(
         '-a',
         '--attachment',
         prompt=True,
-        type=click.Path(),
-        default=None,
+        default='None',
         help="Document attachment"
         )
 @click.option(
         '-t',
         '--to',
         prompt=True,
+        default='vaibhavblayer@gmail.com',
         help="Email id to send to"
         )
 def main(subject, mail, image, attachment, to):
+   
+    if image == 'None':
+        image = None
+
+    if attachment == 'None':
+        attachment = None
+
+    mail += f"\n\n\t\tsent from Vaibhav's MacBook-Air"
+
     if message != "":
         msg = message(subject, mail, image, attachment)
         tos = [to]
