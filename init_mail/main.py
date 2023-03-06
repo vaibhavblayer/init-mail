@@ -46,7 +46,9 @@ def message(subject, text, img, attachment):
 
 
 
-@click.command()
+CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
+
+@click.command(context_settings=CONTEXT_SETTINGS)
 @click.option(
         '-s',
         '--subject',
@@ -65,6 +67,7 @@ def message(subject, text, img, attachment):
         '-i',
         '--image',
         prompt=True,
+        type=click.Path(),
         default='None',
         help="Image path"
         )
@@ -72,6 +75,7 @@ def message(subject, text, img, attachment):
         '-a',
         '--attachment',
         prompt=True,
+        type=click.Path(),
         default='None',
         help="Document attachment"
         )
