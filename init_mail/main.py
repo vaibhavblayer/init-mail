@@ -8,6 +8,8 @@ import os
 
 import click
 
+
+
 # initialize connection to our
 # email server, we will use gmail here
 smtp = smtplib.SMTP('smtp.gmail.com', 587)
@@ -54,6 +56,7 @@ CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
         '--subject',
         prompt=True,
         default="Hello there",
+        show_default=True,
         help="Subject of the email"
         )
 @click.option(
@@ -61,6 +64,7 @@ CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
         '--mail',
         prompt=True,
         default="Message",
+        show_default=True,
         help="Message text"
         )
 @click.option(
@@ -69,6 +73,7 @@ CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
         prompt=True,
         type=click.Path(),
         default='None',
+        show_default=True,
         help="Image path"
         )
 @click.option(
@@ -77,6 +82,7 @@ CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
         prompt=True,
         type=click.Path(),
         default='None',
+        show_default=True,
         help="Document attachment"
         )
 @click.option(
@@ -84,6 +90,7 @@ CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
         '--to',
         prompt=True,
         default='vaibhavblayer@gmail.com',
+        show_default=True,
         help="Email id to send to"
         )
 def main(subject, mail, image, attachment, to):
